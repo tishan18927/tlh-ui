@@ -1,0 +1,69 @@
+<div class="dashboard-container">
+  <form class="search-form" id="availabilitySearch" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="search-form-container">
+      <div class="fields-container">
+        <fieldset>
+          <div>
+
+            <div class="selected-hotel-area">
+              <div class="selected-hotel" *ngIf="selectedHotel">
+                <h4>Selected Hotel</h4>
+                <span>
+                  <strong>{{selectedHotel.name}}</strong>
+                </span>
+                <br>
+                <span>{{selectedHotel.city}}</span>
+              </div>
+            </div>
+
+            <div class="data-input-area">
+              
+              <div class="ng-autocomplete" content="width=device-width, initial-scale=1.0">
+                <ng-autocomplete [data]="hotels" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+                  (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                  [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                  <p><strong [innerHTML]="item.name"></strong>
+                    <a [innerHTML]="item.city"></a></p>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
+
+              <div class="date-holder">
+                <div>
+                  <label>From</label>
+                  <input matInput [matDatepicker]="picker" placeholder="Select check-in date" formControlName="start">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </div>
+
+                <div>
+                  <label>To</label>
+                  <input matInput [matDatepicker]="picker2" placeholder="Select check-out date" formControlName="end">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </div>
+
+                <div class="person-count-holder">
+                  <label for="personCount">Guests Count&nbsp;</label>
+                  <input id="personCount" type="number" step="1" min="1" max="6" formControlName="personCount" />
+                </div>
+              </div>
+
+              <div>
+                <button id="availabilitySearchSubmit" type="submit"
+                  [disabled]="!searchForm.valid || !selectedHotel">Submit</button>
+              </div>
+            </div>
+
+        </fieldset>
+      </div>
+    </div>
+
+  </form>
+</div>

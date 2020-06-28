@@ -1,0 +1,42 @@
+.ng-autocomplete {
+    width: inherit;
+}
+
+fieldset {
+    width: 30em;
+    height: 40em;
+    opacity: 100%;
+}
+
+.dashboard-container {
+    text-align: center;
+}
+
+.search-form-container {
+    display: inline-block;
+}
+
+.fields-container {
+    background-color: lighten($color: #000000, $amount: 70%);
+    opacity: 100%;
+}
+
+.date-holder input {
+    height: 2.5em;
+}
+
+.date-holder label {
+    height: 2.5em;
+}
+
+.selected-hotel-area {
+    height: 10em;
+}
+
+.date-holder {
+    padding: 5px;
+}
+
+// .selected-hotel {
+
+// }
