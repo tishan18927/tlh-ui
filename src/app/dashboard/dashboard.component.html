@@ -4,6 +4,9 @@
       <div class="fields-container">
         <fieldset>
           <div>
+            <div>
+              <h3>Search Room Availability</h3>
+            </div>
 
             <div class="selected-hotel-area">
               <div class="selected-hotel" *ngIf="selectedHotel">
@@ -37,14 +40,14 @@
               <div class="date-holder">
                 <div>
                   <label>From</label>
-                  <input matInput [matDatepicker]="picker" placeholder="Select check-in date" formControlName="start">
+                  <input matInput [matDatepicker]="picker" placeholder="Select check-in date" formControlName="fromDate">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </div>
 
                 <div>
                   <label>To</label>
-                  <input matInput [matDatepicker]="picker2" placeholder="Select check-out date" formControlName="end">
+                  <input matInput [matDatepicker]="picker2" placeholder="Select check-out date" formControlName="toDate">
                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                   <mat-datepicker #picker2></mat-datepicker>
                 </div>
@@ -56,11 +59,11 @@
               </div>
 
               <div>
-                <button id="availabilitySearchSubmit" type="submit"
+                <button id="availabilitySearchSubmit" name="availabilitySearchSubmit" type="submit"
                   [disabled]="!searchForm.valid || !selectedHotel">Submit</button>
               </div>
             </div>
-
+          </div>
         </fieldset>
       </div>
     </div>

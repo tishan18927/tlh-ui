@@ -4,7 +4,7 @@
 
 fieldset {
     width: 30em;
-    height: 40em;
+    height: 35em;
     opacity: 100%;
 }
 
@@ -14,18 +14,24 @@ fieldset {
 
 .search-form-container {
     display: inline-block;
+    padding-top: 10px;
 }
 
 .fields-container {
-    background-color: lighten($color: #000000, $amount: 70%);
+    background-color: lighten($color: #000000, $amount: 90%);
     opacity: 100%;
 }
 
-.date-holder input {
+.data-holder input {
     height: 2.5em;
 }
 
-.date-holder label {
+.data-holder #availabilitySearchSubmit {
+    width: 483px;
+    height: 40px;
+}
+
+.data-holder label {
     height: 2.5em;
 }
 
@@ -33,10 +39,19 @@ fieldset {
     height: 10em;
 }
 
-.date-holder {
-    padding: 5px;
+.data-holder {
+    padding-top: 2em;
 }
 
-// .selected-hotel {
+.data-holder button {
+    padding: 2em;
+}
 
-// }
+.selected-hotel-area {
+    position: relative;
+    text-align: center;
+}
+
+.selected-hotel-area .selected-hotel{
+    padding-top: 20px;
+}

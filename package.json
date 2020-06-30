@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
+    "@angular/animations": "^6.1.10",
     "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
@@ -25,10 +25,13 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "angular-ng-autocomplete": "^2.0.1",
+    "core-js": "^2.5.4",
     "moment": "2.18.1",
     "moment-timezone": "^0.5.13",
-    "core-js": "^2.5.4",
+    "ngx-stripe": "^6.0.0-rc.0",
+    "ngx-toastr": "^10.1.0",
     "rxjs": "~6.2.0",
+    "stripe-angular": "^1.1.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

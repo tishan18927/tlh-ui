@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HotelService } from '../hotel.service';
+import { HotelDataShareService } from '../shared/hotel-data-share.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,58 +14,47 @@ export class DashboardComponent implements OnInit {
 
   keyword = 'name';
 
-  initData = [
-    {
-      "id": 1,
-      "name": "Britannia",
-      "city": "London",
-      "rooms": []
-    },
-    {
-      "id": 1,
-      "name": "Maga",
-      "city": "Iquador",
-      "rooms": []
-    },
-    {
-      "id": 1,
-      "name": "Carlton",
-      "city": "Paris",
-      "rooms": []
-    },
-    {
-      "id": 1,
-      "name": "Grait Britain",
-      "city": "Qualalampur",
-      "rooms": []
-    }
-  ];
+  initData: any;
 
-  hotels = JSON.parse(JSON.stringify(this.initData));
+  hotels: any;
 
   selectedHotel: any;
 
   searchForm = new FormGroup({
     personCount: new FormControl('', Validators.required),
-    start: new FormControl('', Validators.required),
-    end: new FormControl()
-  }
-  );
-
-  // range = new FormGroup({
-  //   start: new FormControl(),
-  //   end: new FormControl()
-  // });
+    fromDate: new FormControl('', Validators.required),
+    toDate: new FormControl()
+  });
 
 
-  constructor() { }
+  constructor (
+    private hotelService: HotelService,
+    private hotelDataService: HotelDataShareService,
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
+    this.hotelService.getHotelsList().subscribe((res) => {
+      this.initData = res;
+      this.hotels = JSON.parse(JSON.stringify(res))
+    }, (error) => {
+      this.toastr.error("Failed to load hotels.")
+    })
 
+    if (this.hotelDataService.getStateObject()) {
+      this.selectedHotel = this.hotelDataService.getStateObject()['hotel'];
+      this.searchForm.setValue(this.hotelDataService.getStateObject()['formData']);
+    }
   }
 
   onSubmit() {
-    console.log(this.searchForm.value);
+    this.hotelDataService.setStateObject({
+      hotel: this.selectedHotel,
+      formData: this.searchForm.value
+    })
+
+    this.router.navigate(['/dashboard/rooms']);
   }
 
   selectEvent(item) {
@@ -72,7 +65,8 @@ export class DashboardComponent implements OnInit {
     if (val) {
       let keyword_case_insensitive = val.toLowerCase()
       this.hotels = this.initData.filter(h => h && (
-        (h.city && h.city.toLowerCase().includes(keyword_case_insensitive))
+        (h.city && h.city.toLowerCase().includes(keyword_case_insensitive)) ||
+        (h.name && h.name.toLowerCase().includes(keyword_case_insensitive))
       ));
     }
   }

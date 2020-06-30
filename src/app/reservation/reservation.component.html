@@ -1,0 +1,38 @@
+<div class="main-container">
+  <div class="container">
+    <div class="container-top">
+    <span>Reserve Room</span>
+    <div class="room-detail-container" *ngIf="paymentDetails">
+      <span class="category"><strong>{{paymentDetails.category.name}}</strong></span>
+      <div class="room-detail-container-tab">
+        <div class="tabcol">
+          <p><strong>From</strong></p>
+          <p>{{basics.dateFrom}}</p>
+        </div>
+        <div class="tabcol">
+          <p><strong>Guests</strong></p>
+          <p>{{paymentDetails.category.guestCount}}</p>
+        </div>
+        <div class="tabcol">
+          <p><strong>To</strong></p>
+          <p>{{basics.dateFrom}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="card-form-container">
+      <div class="card-form">
+      <form novalidate (ngSubmit)="reserve($event)" [formGroup]="stripe">
+        <div class="col-lg-6">
+          <div id="card-element" class="field"></div>
+        </div>
+        <div class="col-lg-12">
+          <button class="btn btn-success" type="submit">
+            £ {{price}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

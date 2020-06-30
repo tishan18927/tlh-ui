@@ -4,11 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgxStripeModule } from 'ngx-stripe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     AutocompleteLibModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule,
+    MatIconModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+    NgxStripeModule.forRoot('pk_test_51GykJhAIfTM5DUfXKDQEE5RtbCMg9GFpPeAsjCMYETyRqJLOV0vOLfwCZXMWrPkRoQQat5ZEMugJwkOToDugToBa00ZgJT6t4m')
   ],
   providers: [MatNativeDateModule],
   bootstrap: [AppComponent]

@@ -1,0 +1,32 @@
+<div class="main-container" *ngIf="hotel && availableRooms">
+  <div class="header-container">
+    <div class="header">
+      <div class="title">
+        <h3>Available Rooms</h3>
+      </div>
+      <div class="header-data">
+        <span class="mmiddle"><strong>{{hotel.name}}</strong></span>
+        <span class="mside"><strong>From:</strong>&nbsp;{{dateFrom}}</span>
+        <span class="mside mright"><strong>To:</strong>&nbsp;{{dateTo}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-container" *ngIf="availableRooms">
+  <div *ngFor="let room of availableRooms" class="col" (click)="onSelect(room)">
+    <div class="flip-card" *ngIf="room">
+      <div class="flip-card-inner">
+        <div class="data-container flip-card-front">
+          <h4>{{room.category.name}}</h4>
+          <p class="col side">Price:&nbsp;<span>{{room.price.price}}</span></p>
+          <p class="col side right">Persons:&nbsp;<span>{{room.category.guestCount}}</span></p>
+        </div>
+        <div class="flip-card-back">
+          <h5>Description</h5>
+          <p>{{room.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

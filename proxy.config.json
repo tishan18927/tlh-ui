@@ -1,0 +1,20 @@
+{
+    "/api/rms-service/*": {
+      "target": "http://localhost:8430",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/rms-service/": ""
+      }
+    },
+    "/api/bms-service/*": {
+      "target": "http://localhost:8440",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/bms-service/": ""
+      }
+    }
+  }
