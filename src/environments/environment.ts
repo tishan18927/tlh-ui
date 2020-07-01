@@ -7,7 +7,11 @@ export const environment = {
 };
 
 export const API_GATEWAY = {
-  SERVER: "/api",
+  SERVER: "/api"
+}
+
+export const CONFIGS = {
+  STRIPE_KEY: 'pk_test_51GykJhAIfTM5DUfXKDQEE5RtbCMg9GFpPeAsjCMYETyRqJLOV0vOLfwCZXMWrPkRoQQat5ZEMugJwkOToDugToBa00ZgJT6t4m'
 }
 
 /*

@@ -5,3 +5,7 @@ export const environment = {
 export const API_GATEWAY = {
   SERVER: "/api",
 }
+
+export const CONFIGS = {
+  STRIPE_KEY: ''
+}

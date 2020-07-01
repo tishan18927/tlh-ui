@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material';
  
 import { ToastrModule } from 'ngx-toastr';
+import { CONFIGS } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    NgxStripeModule.forRoot('pk_test_51GykJhAIfTM5DUfXKDQEE5RtbCMg9GFpPeAsjCMYETyRqJLOV0vOLfwCZXMWrPkRoQQat5ZEMugJwkOToDugToBa00ZgJT6t4m')
+    NgxStripeModule.forRoot(CONFIGS.STRIPE_KEY)
   ],
   providers: [MatNativeDateModule],
   bootstrap: [AppComponent]
